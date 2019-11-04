@@ -1,22 +1,39 @@
-.App {
+.principal {
+  max-width: 480px;
   text-align: center;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
+.logo img{
+  width: 90%;
+  margin-top: 4em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.cuerpo p{
+  margin: 1em;
+  margin-bottom: 2em;
+  margin-top: 3em;
+  font-size: 0.89em;
 }
 
-.App-link {
-  color: #09d3ac;
+.cuerpo img{
+  width: 25%;
+}
+
+.Tabla{
+  margin-top: 2em;
+}
+
+.Tabla table{
+  margin: auto;
+  width: 80%;
+}
+
+.Tabla table td{
+  width: 50%
+}
+
+.btn-home img{
+  width: 13%;
+  margin-top: 1.5em;
 }
