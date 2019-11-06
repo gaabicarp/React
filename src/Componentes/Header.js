@@ -1,5 +1,9 @@
 import React from "react";
-import logo from "./img/MYtineraryLogo.png";
+import logo from "./img/Logo.png";
+import Avion from "./img/Avion.png";
+import Comida from "./img/Comida.png";
+import Musica from "./img/Musica.png";
+import Transporte from "./img/Transporte.png";
 
 class Header extends React.Component {
   constructor(props) {
@@ -8,8 +12,16 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="logo">
-        <img src={logo}></img>
+      <div className="Header">
+        <div className="logo">
+          <img src={logo}></img>
+        </div>
+        <div className="Menu">
+          <img src={Avion}></img>
+          <img src={Comida}></img>
+          <img src={Musica}></img>
+          <img src={Transporte}></img>
+        </div>
       </div>
     );
   }

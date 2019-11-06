@@ -16,7 +16,7 @@ class Log extends React.Component {
                 <Link to="/login">Log In</Link>
               </td>
               <td>
-                <Link to="/singin">Create Acount</Link>
+                <Link to="/create">Create Acount</Link>
               </td>
             </tr>
           </table>

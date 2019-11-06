@@ -1,3 +1,14 @@
+.Menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center ;
+}
+
+.Menu img{
+  width: 15%;
+  margin: 0%;
+}
+
 .principal {
   max-width: 480px;
   text-align: center;
