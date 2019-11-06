@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 class Log extends React.Component {
   constructor(props) {
     super(props);
@@ -13,10 +14,14 @@ class Log extends React.Component {
           <table>
             <tr>
               <td>
-                <Link to="/login">Log In</Link>
+                <Link to="/login">
+                  <Button variant="outline-success">Log In</Button>
+                </Link>
               </td>
               <td>
-                <Link to="/create">Create Acount</Link>
+                <Link to="/create">
+                  <Button variant="outline-success">Create Account</Button>
+                </Link>
               </td>
             </tr>
           </table>
