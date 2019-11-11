@@ -16,7 +16,9 @@ class Body extends React.Component {
             cities
           </p>
           <h1>Start Browsing</h1>
-          <Link to ="/cities"><img src={Flecha}></img></Link>
+          <Link to="/cities">
+            <img src={Flecha}></img>
+          </Link>
         </div>
       </React.Fragment>
     );

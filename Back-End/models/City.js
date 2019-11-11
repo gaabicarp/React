@@ -1,16 +1,16 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const ciudadesSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    }
-})
+  ciudad: {
+    type: String,
+    required: true
+  },
+  pais: {
+    type: String,
+    required: true
+  }
+});
 
-const Ciudad = mongoose.model('Ciudad', ciudadesSchema)
+const Ciudad = mongoose.model("Ciudad", ciudadesSchema);
 
-module.exports = Ciudad
+module.exports = Ciudad;
