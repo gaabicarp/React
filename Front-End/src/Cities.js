@@ -1,59 +1,43 @@
 import React from "react";
 import Footer from "./Componentes/Footer";
 import {connect} from "react-redux"
+import axios from 'axios'
 
 class Cities extends React.Component {
-  constructor(props) {
-    super(props);
 
-    // this.state = {
-    //   loading: false,
-    //   cities: [],
-    //   url: "http://localhost:4000/city/all"
-    // };
-  }
-
-  componentDidMount() {
-    this.getCities();
-  }
-
-  getCities = () => {
-    fetch("http://localhost:4000/city/all")
-      .then(res => res.json())
-      .then(res => this.props.rellenarCiudades(res))
-      .catch(e => console.log(e));
-  };
+   componentDidMount() {
+      this.props.getCities()
+    }
 
   render() {
-    console.log(this.props.listaCiudades)
-
     return (
       <div className="principal">
-        <h1>asdas</h1>
-        {/* {this.props.listaCiudades.map(city => {
+        <h1>Ciudades</h1>
+        {this.props.listaCiudades.map(city => {
           return <li key={city._id}>{city.ciudad}</li>;
-        })} */}
+        })}
         <Footer />
       </div>
     );
   }
 }
-const GETUSR = 'GET_USUARIOS';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    rellenarCiudades: (res) => {
-      dispatch({
-        type: GETUSR,
-        payload: res
-      })
-    }
-  }
-}
 
 const mapStateToProps = (state) => {
   return {
-    listaCiudades: state.ciudades
+    listaCiudades: state.cities.ciudades
   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCities: async () => {
+      let ciudades = await axios('http://localhost:4000/city/all')
+      ciudades = ciudades.data.respuesta
+      console.log(ciudades)
+      dispatch({type: 'GET_CITIES', payload: ciudades})
+    }
+  }
+  
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cities)

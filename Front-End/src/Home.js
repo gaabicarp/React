@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Componentes/Header";
+import Cabecera from "./Componentes/Cabecera";
 import Body from "./Componentes/Body";
 import Log from "./Componentes/Log";
 import Footer from "./Componentes/Footer";
@@ -12,7 +12,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="principal">
-        <Header />
+        <Cabecera />
         <Body />
         <Log />
         <Footer />

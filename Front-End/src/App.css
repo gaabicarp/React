@@ -1,9 +1,10 @@
-.Cabezera-img {
-  width: 1.5em;
+.Cabecera-img {
+  width: 1.7em;
   margin: 0px;
 }
 
 .Arriba {
+  max-height: 3em;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -17,9 +18,8 @@
 }
 
 .Menu img {
-  width: 15%;
-  margin: 0%;
-  margin-left: 0.5em;
+  width: 4em;
+  margin: 0.1em;
 }
 
 .principal {
@@ -29,8 +29,7 @@
 }
 
 .logo img {
-  width: 90%;
-  margin-top: 0.5em;
+  width: 15em;
 }
 
 .cuerpo p {
@@ -40,8 +39,8 @@
   font-size: 0.89em;
 }
 
-.cuerpo img {
-  width: 25%;
+.Flecha {
+  width: 8em;
 }
 
 .Tabla {

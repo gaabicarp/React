@@ -2,14 +2,15 @@ import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Profile from "./img/profile.png";
 import MenuHamb from "./img/menuhamb.png";
+import logo from "./img/Logo.png";
 
-class Cabezera extends React.Component {
+class Cabecera extends React.Component {
   render() {
     return (
       <div className="Arriba">
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
-            <img src={Profile} className="Cabezera-img"></img>
+            <img src={Profile} className="Cabecera-img"></img>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
@@ -18,9 +19,15 @@ class Cabezera extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
 
+        <div className="Header">
+          <div className="logo">
+            <img src={logo}></img>
+          </div>
+        </div>
+
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
-            <img src={MenuHamb} className="Cabezera-img"></img>
+            <img src={MenuHamb} className="Cabecera-img"></img>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
@@ -33,24 +40,4 @@ class Cabezera extends React.Component {
   }
 }
 
-export default Cabezera;
-// import React from "react";
-// import MenuHamb from "./img/menuhamb.png";
-// import Profile from "./img/profile.png";
-
-// class Cabezera extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     return (
-//       <div className="Cabezera">
-//
-//         <img src={MenuHamb}></img>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Cabezera;
+export default Cabecera;

@@ -1,31 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+
 class Log extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
       <React.Fragment>
-        <div className="Tabla">
           <p>Want to build your own Ytinary?</p>
-          <table>
-            <tr>
-              <td>
-                <Link to="/login">
-                  <Button variant="outline-success">Log In</Button>
+          <Container>
+            <Row>
+              <Col>
+                <Link to ="/login">
+                  <Button variant="outline-success" size="sm" block>
+                    Create Account
+                  </Button>
                 </Link>
-              </td>
-              <td>
+              </Col>
+              <Col>
                 <Link to="/create">
-                  <Button variant="outline-success">Create Account</Button>
+                  <Button variant="outline-success" size="sm" block>
+                    Log In
+                  </Button>
                 </Link>
-              </td>
-            </tr>
-          </table>
-        </div>
+              </Col>
+            </Row>
+          </Container>
       </React.Fragment>
     );
   }

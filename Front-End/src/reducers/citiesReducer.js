@@ -4,10 +4,10 @@ const initialState = {
 
 const citiesReducer = (state = initialState, action) =>{
     switch (action.type) {
-        case 'GET_CIUDADES':
+        case 'GET_CITIES':
             return {...state, ciudades: [...action.payload]}
         case 'BORRAR_CIUDAD':
-            //FAFAFA
+            //ASDASD
         default:
             return state
     }
