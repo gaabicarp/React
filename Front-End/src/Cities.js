@@ -1,15 +1,16 @@
 import React from "react";
 import Footer from "./Componentes/Footer";
+import {connect} from "react-redux"
 
 class Cities extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      loading: false,
-      cities: [],
-      url: "http://localhost:4000/city/all"
-    };
+    // this.state = {
+    //   loading: false,
+    //   cities: [],
+    //   url: "http://localhost:4000/city/all"
+    // };
   }
 
   componentDidMount() {
@@ -17,40 +18,42 @@ class Cities extends React.Component {
   }
 
   getCities = () => {
-    this.setState({ loading: true });
-
-    fetch(this.state.url)
+    fetch("http://localhost:4000/city/all")
       .then(res => res.json())
-      .then(data => {
-        this.setState({
-          cities: data.respuesta,
-          loading: false
-        });
-      })
+      .then(res => this.props.rellenarCiudades(res))
       .catch(e => console.log(e));
   };
 
   render() {
-    console.log(this.state.cities);
-
-    if (this.state.loading) {
-      return (
-        <div className="principal">
-          <p>Descargando Api perro!</p>
-        </div>
-      );
-    }
+    console.log(this.props.listaCiudades)
 
     return (
       <div className="principal">
         <h1>asdas</h1>
-        {this.state.cities.map(city => {
+        {/* {this.props.listaCiudades.map(city => {
           return <li key={city._id}>{city.ciudad}</li>;
-        })}
+        })} */}
         <Footer />
       </div>
     );
   }
 }
+const GETUSR = 'GET_USUARIOS';
 
-export default Cities;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    rellenarCiudades: (res) => {
+      dispatch({
+        type: GETUSR,
+        payload: res
+      })
+    }
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    listaCiudades: state.ciudades
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Cities)
