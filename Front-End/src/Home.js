@@ -6,9 +6,6 @@ import Footer from "./Componentes/Footer";
 import "./App.css";
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="principal">

@@ -8,9 +8,4 @@ router
   .get(ciudadesController.listarCiudades)
   .post(ciudadesController.cargarCiudad);
 
-router
-  .route('/:name')
-  .get(ciudadesController.listarUno);
-
-
 module.exports = router;

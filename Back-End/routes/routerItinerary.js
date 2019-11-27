@@ -4,11 +4,10 @@ const ItineraryController = require("../controllers/itineraryControllers");
 const router = express.Router();
 
 router
-    .route("/Itinerary")
-    .get(ItineraryController.listarItinerary)
-    .post(ItineraryController.cargarItinerary);
+  .route("/all")
+  .get(ItineraryController.listarItinerary)
+  .post(ItineraryController.cargarItinerary);
 
+router.route("/:id").get(ItineraryController.listarUno);
 
-
-    
 module.exports = router;

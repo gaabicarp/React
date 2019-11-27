@@ -1,14 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const getCities = () => dispatch => {
-    dispatch(setItemsLoading());
-    axios
-        .get('http://localhost:4000/city/all')
-        .then(res =>
-            dispatch({
-                type: 'GET_CITIES',
-                payload: res.data
-            })
-        .catch(err =>
-            dispatch(returnErrors(err.response.data, err.response.status))))
-}
+const getCities = () =>  dispatch => {
+  let ciudades = await axios("http://localhost:4000/city/all");
+  ciudades = ciudades.data.respuesta;
+  console.log(ciudades);
+  dispatch({ type: "GET_CITIES", payload: ciudades });
+};
+
+export default getCities;

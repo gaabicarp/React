@@ -10,7 +10,7 @@ class Cabecera extends React.Component {
       <div className="Arriba">
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
-            <img src={Profile} className="Cabecera-img"></img>
+            <img alt="profile" src={Profile} className="Cabecera-img"></img>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
@@ -21,13 +21,13 @@ class Cabecera extends React.Component {
 
         <div className="Header">
           <div className="logo">
-            <img src={logo}></img>
+            <img alt="logo" src={logo}></img>
           </div>
         </div>
 
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
-            <img src={MenuHamb} className="Cabecera-img"></img>
+            <img alt="Menu" src={MenuHamb} className="Cabecera-img"></img>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>

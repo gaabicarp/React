@@ -4,12 +4,14 @@ import Login from "./Login";
 import CreateAcount from "./Singin";
 import Cities from "./Cities";
 import "./App.css";
+import Itinerary from "./Itinerary";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/itinerary" component={Itinerary} />
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/create" component={CreateAcount} />
