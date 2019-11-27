@@ -5,15 +5,7 @@ const ItinerartyController = {
         const data = await Itinerary.find();
         res.json({respuesta: data});
     },
-
-    listarUno: async (req,res) => {
-        let cityRequested = req.params.name;
-  		Itinerary.findOne({ name: cityRequested })
-			.then(ciudad => {
-				res.send(ciudad)
-			})
-			.catch(err => console.log(err));
-    },
+    
     cargarItinerary: async (req,res) =>{
         var title = req.body.title;
         var profilePicture = req.body.profilePicture;

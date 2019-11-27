@@ -9,8 +9,6 @@ router
     .post(ItineraryController.cargarItinerary);
 
 
-router
-    .route('/:name')
-    .get(ItineraryController.listarUno);
+
     
 module.exports = router;

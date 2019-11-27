@@ -5,6 +5,14 @@ const ciudadesController = {
     const data = await Ciudad.find();
     res.json({ respuesta: data });
   },
+  listarUno: async (req,res) => {
+    let cityRequested = req.params.name;
+  Ciudad.findOne({ ciudad: cityRequested })
+  .then(ciudad => {
+    res.send(ciudad)
+  })
+  .catch(err => console.log(err));
+  },
   cargarCiudad: async (req, res) => {
     var ciudad = req.body.ciudad;
     var pais = req.body.pais;
