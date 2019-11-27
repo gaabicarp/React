@@ -16,7 +16,11 @@ class Cities extends React.Component {
    componentDidMount() {
       this.props.getCities()
     };
-  
+    
+    constructor(){
+      super()
+      this.title= React.createRef()
+    }
 
 
 
@@ -28,9 +32,10 @@ class Cities extends React.Component {
         <h1>Ciudades</h1>
         {this.props.listaCiudades.map(city => {
           return (
-          <Card>
+          <Card onClick = {this.getCiudad}>
             <CardActionArea>
               <CardMedia
+                ref= {this.title}
                 image="https://www.oirealtor.com/noticias-inmobiliarias/wp-content/uploads/2018/10/oirealtor-noticias-vivir-en-barcelona-ciudad-noche.jpg"
                 title={city.ciudad}
                 />
@@ -56,6 +61,9 @@ class Cities extends React.Component {
   }
 }
 
+function getCiudad() {
+  console.log(this.title);
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -70,6 +78,9 @@ const mapDispatchToProps = (dispatch) => {
       ciudades = ciudades.data.respuesta
       console.log(ciudades)
       dispatch({type: 'GET_CITIES', payload: ciudades})
+    },
+    getClick: async () => {
+
     }
   }
   
