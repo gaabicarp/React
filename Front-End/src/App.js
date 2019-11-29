@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/itinerary" component={Itinerary} />
+        <Route exact path="/itineraries/:id" component={Itinerary} />
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/create" component={CreateAcount} />

@@ -12,17 +12,24 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+
 class Itinerary extends React.Component {
   componentDidMount() {
     this.props.getItinerary();
   }
 
+  
+
   render() {
+    const {match} =this.props;
     return (
       <div className="principal">
         <h1>Ciudades</h1>
+        <p>
+          {match.params.id}
+        </p>
         {this.props.listaItinerary.map(itinerary => {
-          return (
+          if (itinerary._id == match.params.id){return (
             <Card>
               <CardActionArea>
                 <CardMedia
@@ -44,13 +51,17 @@ class Itinerary extends React.Component {
                 </Button>
               </CardActions>
             </Card>
-          );
+          )}
+          ;
         })}
-        <Footer />
+          <Footer />
+
       </div>
-    );
+    ); 
   }
 }
+
+
 
 const mapStateToProps = state => {
   return {
