@@ -4,12 +4,11 @@
 }
 
 .Arriba {
+  margin: 0.7em;
   max-height: 3em;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  background-color: rgb(141, 194, 155);
-}
+  justify-content: space-between;}
 
 .Menu {
   display: flex;
@@ -29,18 +28,26 @@
 }
 
 .logo img {
-  width: 15em;
+  width: 20em;
 }
 
+.Carrusel{
+  margin: 0em 1em;
+}
+
+.cuerpo {
+  margin-top: 0.7em;
+}
 .cuerpo p {
   margin: 1em;
-  margin-bottom: 2em;
-  margin-top: 3em;
+  margin-bottom: 1em;
+  margin-top: 1em;
   font-size: 0.89em;
 }
 
 .Flecha {
-  width: 8em;
+  width: 6.5em;
+  margin-bottom: 1em;
 }
 
 .Tabla {

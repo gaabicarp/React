@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+var Ciudad = mongoose.model('Ciudad')
 
 const itinerarySchema = new mongoose.Schema({
     title: {
@@ -10,8 +11,9 @@ const itinerarySchema = new mongoose.Schema({
         required: true
     },
     city_id: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "Ciudad"},
+        type: mongoose.Schema.ObjectId, 
+        ref: "Ciudad",
+    required: true},
     raiting: {
         type: Number,
         required: true

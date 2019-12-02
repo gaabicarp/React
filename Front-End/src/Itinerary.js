@@ -29,7 +29,7 @@ class Itinerary extends React.Component {
           {match.params.id}
         </p>
         {this.props.listaItinerary.map(itinerary => {
-          if (itinerary._id == match.params.id){return (
+          if (itinerary.city_id == match.params.id){return (
             <Card>
               <CardActionArea>
                 <CardMedia

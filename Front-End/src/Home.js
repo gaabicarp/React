@@ -11,8 +11,6 @@ class Home extends React.Component {
       <div className="principal">
         <Cabecera />
         <Body />
-        <Log />
-        <Footer />
       </div>
     );
   }

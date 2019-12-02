@@ -19,6 +19,7 @@ const ItinerartyController = {
     var profilePicture = req.body.profilePicture;
     var raiting = req.body.raiting;
     var duration = req.body.duration;
+    var city_id = req.body.city_id;
     var price = req.body.price;
     var hashtags = req.body.hashtags;
     const nuevoItinerary = new Itinerary({
@@ -26,6 +27,7 @@ const ItinerartyController = {
       profilePicture: profilePicture,
       raiting: raiting,
       duration: duration,
+      city_id: city_id,
       price: price,
       hashtags: hashtags
     });

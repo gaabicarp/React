@@ -2,14 +2,13 @@ import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Profile from "./img/profile.png";
 import MenuHamb from "./img/menuhamb.png";
-import logo from "./img/Logo.png";
 
 class Cabecera extends React.Component {
   render() {
     return (
       <div className="Arriba">
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
+          <Dropdown.Toggle variant="Secundary" id="dropdown-basic" size="sm">
             <img alt="profile" src={Profile} className="Cabecera-img"></img>
           </Dropdown.Toggle>
 
@@ -19,14 +18,8 @@ class Cabecera extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
 
-        <div className="Header">
-          <div className="logo">
-            <img alt="logo" src={logo}></img>
-          </div>
-        </div>
-
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" size="sm">
+          <Dropdown.Toggle variant="Secundary" id="dropdown-basic" size="sm">
             <img alt="Menu" src={MenuHamb} className="Cabecera-img"></img>
           </Dropdown.Toggle>
 
