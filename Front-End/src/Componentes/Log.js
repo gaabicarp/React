@@ -9,27 +9,27 @@ class Log extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="Log">
           <p>Want to build your own Ytinary?</p>
           <Container>
             <Row>
               <Col>
-                <Link to ="/login">
-                  <Button variant="outline-success" size="sm" block>
+                <Link to ="/create">
+                  <Button variant="outline-danger" size="sm" block>
                     Create Account
                   </Button>
                 </Link>
               </Col>
               <Col>
-                <Link to="/create">
-                  <Button variant="outline-success" size="sm" block>
+                <Link to="/login">
+                  <Button variant="outline-danger" size="sm" block>
                     Log In
                   </Button>
                 </Link>
               </Col>
             </Row>
           </Container>
-      </React.Fragment>
+      </div>
     );
   }
 }

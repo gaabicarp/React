@@ -2,7 +2,6 @@ import React from "react";
 import Cabecera from "./Componentes/Cabecera";
 import Body from "./Componentes/Body";
 import Log from "./Componentes/Log";
-import Footer from "./Componentes/Footer";
 import "./App.css";
 
 class Home extends React.Component {
@@ -11,6 +10,7 @@ class Home extends React.Component {
       <div className="principal">
         <Cabecera />
         <Body />
+        <Log />
       </div>
     );
   }
