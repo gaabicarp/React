@@ -7,6 +7,7 @@ const UserController = {
     },
 
     cargarUser: async (req, res) => {
+        console.log(req.body.image.name)
         var Firstname = req.body.Firstname;
         var Lastname = req.body.Lastname;
         var Email = req.body.Email;

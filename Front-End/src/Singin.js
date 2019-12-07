@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import logo from "./Componentes/img/Logo.png";
 import Col from 'react-bootstrap/Col';
 import Axios from 'axios'
-
+import formData from 'form-data';
 
 //Regex para Email y Pw
 const emailRegex = RegExp(
@@ -38,6 +38,7 @@ class CreateAcount extends React.Component {
       Email: '',
       UserName: '',
       Password: '',
+      image: null,
       formErrors:{
         Firstname: "",
         Lastname: "",
@@ -79,20 +80,39 @@ class CreateAcount extends React.Component {
     this.setState({formErrors, [name]: value}, () => console.log(this.state));
   }
 
+  handleFile = (e) =>{
+    let file = e.target.files[0]
+    this.setState({image: file})
+  }
+
   submitHandler = (e) =>{
     e.preventDefault();
     if(formValid(this.state)){
-    console.log(this.state)
+    console.log(this.state);
+    let file =this.state.image;
+    let formData= new FormData();
 
-    Axios.post('http://localhost:4000/user/create', {
+    formData.append('image', file)
+    formData.append('name','imageprofile')
+
+    console.log(formData)
+
+    Axios.post(
+      'http://localhost:4000/user/create', 
+      {
       Firstname: this.state.Firstname,
       Lastname: this.state.Lastname,
       Email: this.state.Email,
       UserName: this.state.UserName,
-      Password: this.state.Password
-    })
+      Password: this.state.Password,
+      image: formData
+    },
+    {
+      headers: {
+       'content-type': 'multipart/form-data' // do not forget this 
+      }})
       .then(response =>{
-        return response.data;
+        console.log(response.config.data);
       })
       .catch(error =>{
         console.log(error)
@@ -110,10 +130,12 @@ class CreateAcount extends React.Component {
     const {Firstname, Lastname, Email, UserName, Password, formErrors } = this.state;
     return (
       <div className="principal">
+        <br></br>
         <div className="logo">
           <img alt="logo" src={logo}></img>
         </div>
-        <h1>SING IN</h1>
+        <br></br>
+        <h1>CREATE ACCOUNT</h1>
         <div className="FormCreate">
           <Form method="POST" onSubmit={this.submitHandler}>
             <Form.Row>
@@ -150,14 +172,14 @@ class CreateAcount extends React.Component {
               {formErrors.UserName.length > 0 && (<span className="errorMessaje">{formErrors.UserName}</span>)}
               </Col>
             </Form.Row>
-            {/* <form>
+            <form>
               <label>
                 Upload file:
-                <input type="file" name="image"/>
+                <input type="file" name="file" onChange={(e)=>this.handleFile(e)}/>
               </label>
               <br />
             </form>
-            <br></br> */}
+            <br></br>
             <Button variant="primary" type="submit">
               Submit
             </Button>
