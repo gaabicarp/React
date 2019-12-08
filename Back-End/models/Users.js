@@ -22,7 +22,11 @@ const userSchema = new mongoose.Schema({
     Password: {
         type: String,
         required: true
-    }  
+    },
+    profileImage: {
+        type: String,
+        required: true
+    }
 });
 
 userSchema.pre('save',function(next){

@@ -6,25 +6,20 @@ const UserController = {
         res.json({respuesta: data});
     },
 
-    cargarUser: async (req, res) => {
-        console.log(req.body.image.name)
-        var Firstname = req.body.Firstname;
-        var Lastname = req.body.Lastname;
-        var Email = req.body.Email;
-        var UserName = req.body.UserName;
-        var Password = req.body.Password;
+    cargarUser: (req, res) => {
+        console.log(req.file)
         const nuevoUser = new User({
-            Firstname: Firstname,
-            Lastname: Lastname,
-            Email: Email,
-            UserName: UserName,
-            Password: Password,
+            Firstname: req.body.Firstname,
+            Lastname: req.body.Lastname,
+            Email: req.body.Email,
+            UserName: req.body.UserName,
+            Password: req.body.Password,
+            profileImage: req.file.path
         });
 
-        await nuevoUser.save();
+        nuevoUser.save();
         res.send("Usuario Creado");
     }
-
 };
 
 module.exports = UserController;

@@ -14,10 +14,6 @@ const path = require('path')
 app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
-app.use(multer({
-    dest: path.join(__dirname,'public/Profileimg')
-}).single('image'))
-
 //Routes
 app.use("/city", require("./routes/routerCiudades"));
 app.use("/Itinerary", require("./routes/routerItinerary"));

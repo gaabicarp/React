@@ -89,11 +89,12 @@ class CreateAcount extends React.Component {
     e.preventDefault();
     if(formValid(this.state)){
     console.log(this.state);
-    let file =this.state.image;
-    let formData= new FormData();
 
-    formData.append('image', file)
-    formData.append('name','imageprofile')
+
+    let file = this.state.image;
+    let formData = new FormData();
+
+    formData.append('image', file, file.name)
 
     console.log(formData)
 
@@ -106,11 +107,7 @@ class CreateAcount extends React.Component {
       UserName: this.state.UserName,
       Password: this.state.Password,
       image: formData
-    },
-    {
-      headers: {
-       'content-type': 'multipart/form-data' // do not forget this 
-      }})
+    })
       .then(response =>{
         console.log(response.config.data);
       })
