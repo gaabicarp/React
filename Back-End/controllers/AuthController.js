@@ -16,8 +16,9 @@ const AuthController = {
                     if(match){
                         //ACCESO
                         payload = {
+                            id: user._id,
                             UserName: user.UserName,
-                            Email: user.Email,
+                            Email: user.Email
                         }
                         jwt.sign(payload,process.env.SECRET_TOKEN,function(error, token){
                             if(error){

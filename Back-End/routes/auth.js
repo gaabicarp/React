@@ -3,6 +3,7 @@ const router = express.Router();
 const AuthCtrl = require('../controllers/AuthController');
 const passport = require('passport');
 require('../passport');
+const userModel = require('../models/Users')
 
 router
     .route("/login")

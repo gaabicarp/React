@@ -3,6 +3,7 @@ import Footer from "./Componentes/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import Col from 'react-bootstrap/Col';
+import GoogleButton from 'react-google-button'
 
 
 class Login extends React.Component {
@@ -31,6 +32,7 @@ class Login extends React.Component {
           </Button>
         </Form>
         <Footer />
+        
       </div>
     );
   }

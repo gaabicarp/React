@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "./Componentes/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import logo from "./Componentes/img/Logo.png";
 import Col from 'react-bootstrap/Col';
 import Axios from 'axios'
-import formData from 'form-data';
+import GoogleLogin from 'react-google-login';
 
 //Regex para Email y Pw
 const emailRegex = RegExp(
@@ -27,6 +28,8 @@ const formValid = ({formErrors, ...rest}) =>{
 
   return valid;
 }
+
+
 
 class CreateAcount extends React.Component {
 
@@ -121,9 +124,12 @@ class CreateAcount extends React.Component {
 
   }
 
-
   
   render() {
+
+    const responseGoogle = (response) => {
+      console.log(response);
+    }
     const {Firstname, Lastname, Email, UserName, Password, formErrors } = this.state;
     return (
       <div className="principal">
@@ -182,6 +188,15 @@ class CreateAcount extends React.Component {
             </Button>
           </Form>
         </div>
+        <Link to ="/google">
+        <GoogleLogin
+          clientId="12194280660-7f0s85enas5qcpn9h8b9vab446si0jr9.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
+        </Link>
         <Footer />
       </div>
     );

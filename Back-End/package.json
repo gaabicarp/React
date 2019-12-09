@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/gaabicarp/React#readme",
   "dependencies": {
+    "@material-ui/core": "^4.7.2",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.0.0",
     "cors": "^2.8.5",
