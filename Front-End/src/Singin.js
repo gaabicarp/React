@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Footer from "./Componentes/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import logo from "./Componentes/img/Logo.png";
 import Col from 'react-bootstrap/Col';
 import Axios from 'axios'
-import GoogleLogin from 'react-google-login';
+import GoogleButton from 'react-google-button'
 
 //Regex para Email y Pw
 const emailRegex = RegExp(
@@ -36,15 +35,11 @@ class CreateAcount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Firstname: '',
-      Lastname: '',
       Email: '',
       UserName: '',
       Password: '',
       image: null,
       formErrors:{
-        Firstname: "",
-        Lastname: "",
         Email: "",
         UserName: "",
         Password: ""
@@ -63,12 +58,6 @@ class CreateAcount extends React.Component {
     
     //Validacion
     switch(name){
-      case 'Firstname':
-        formErrors.Firstname = value.length < 3 ? 'Minimo 3 caracteres' : "";
-        break;
-      case 'Lastname':
-          formErrors.Lastname = value.length < 3  ? 'Minimo 3 caracteres' : "";
-        break;
       case 'Email':
           formErrors.Email = emailRegex.test(value) ? '' : 'Email invalido';
         break;
@@ -93,24 +82,18 @@ class CreateAcount extends React.Component {
     if(formValid(this.state)){
     console.log(this.state);
 
-
-    let file = this.state.image;
     let formData = new FormData();
 
-    formData.append('image', file, file.name)
-
-    console.log(formData)
+    formData.append('Email', this.state.Email)
+    formData.append('UserName', this.state.UserName)
+    formData.set('Password', this.state.Password)
+    
+    formData.append('imagen', this.state.image);
 
     Axios.post(
       'http://localhost:4000/user/create', 
-      {
-      Firstname: this.state.Firstname,
-      Lastname: this.state.Lastname,
-      Email: this.state.Email,
-      UserName: this.state.UserName,
-      Password: this.state.Password,
-      image: formData
-    })
+      formData
+      )
       .then(response =>{
         console.log(response.config.data);
       })
@@ -130,7 +113,7 @@ class CreateAcount extends React.Component {
     const responseGoogle = (response) => {
       console.log(response);
     }
-    const {Firstname, Lastname, Email, UserName, Password, formErrors } = this.state;
+    const {Email, UserName, Password, formErrors } = this.state;
     return (
       <div className="principal">
         <br></br>
@@ -141,19 +124,6 @@ class CreateAcount extends React.Component {
         <h1>CREATE ACCOUNT</h1>
         <div className="FormCreate">
           <Form method="POST" onSubmit={this.submitHandler}>
-            <Form.Row>
-              <Col>
-                <Form.Label>First name</Form.Label>
-                <Form.Control placeholder="First name" name="Firstname" value={Firstname} onChange={this.changeHandler}/>
-                {formErrors.Firstname.length > 0 && (<span className="errorMessaje">{formErrors.Firstname}</span>)}
-              </Col>
-              <Col>
-                <Form.Label>Last name</Form.Label>
-                <Form.Control placeholder="Last name" name="Lastname" value={Lastname} onChange={this.changeHandler}/>
-                {formErrors.Lastname.length > 0 && (<span className="errorMessaje">{formErrors.Lastname}</span>)}
-              </Col>
-            </Form.Row>
-            <br></br>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter email" name="Email" value={Email} onChange={this.changeHandler}/>
@@ -188,15 +158,9 @@ class CreateAcount extends React.Component {
             </Button>
           </Form>
         </div>
-        <Link to ="/google">
-        <GoogleLogin
-          clientId="12194280660-7f0s85enas5qcpn9h8b9vab446si0jr9.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-        />
-        </Link>
+        <a href="http://localhost:4000/auth/google">
+          <GoogleButton/>
+        </a>
         <Footer />
       </div>
     );

@@ -9,12 +9,13 @@ const UserController = {
     cargarUser: (req, res) => {
         console.log(req.file)
         const nuevoUser = new User({
-            Firstname: req.body.Firstname,
-            Lastname: req.body.Lastname,
-            Email: req.body.Email,
-            UserName: req.body.UserName,
-            Password: req.body.Password,
-            profileImage: req.file.path
+            method: 'local',
+            local: {
+                Email: req.body.Email,
+                UserName: req.body.UserName,
+                Password: req.body.Password,
+                profileImage: req.file.path
+            }
         });
 
         nuevoUser.save();

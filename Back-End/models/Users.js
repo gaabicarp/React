@@ -1,38 +1,47 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const userSchema = new mongoose.Schema({
-    Fistname: {
+    method: {
         type: String,
-        required: false
-    },
-    Lastname: {
-        type: String,
-        required: false
-    },
-    Email: {
-        type: String,
-        unique: true,
+        enum: ['local', 'google'],
         required: true
     },
-    UserName: {
-        type: String,
-        unique: true,
-        required: true
+    local: {
+        Email: {
+            type: String,
+            lowercase: true
+        },
+        UserName: {
+            type: String,
+        },
+        Password: {
+            type: String,
+        },
+        profileImage: {
+            type: String,
+        }
     },
-    Password: {
-        type: String,
-        required: true
-    },
-    profileImage: {
-        type: String,
-        required: true
+    google: {
+        id: {
+            type: String
+        },
+        Email: {
+            type: String,
+            lowercase: true
+        },
+        profileImage: {
+            type: String
+        }
     }
 });
 
 userSchema.pre('save',function(next){
+    if (this.method !=='local'){
+        next();
+    }
     bcrypt.genSalt(10).then(salts =>{
-        bcrypt.hash(this.Password, salts).then(hash =>{
-            this.Password = hash;
+        bcrypt.hash(this.local.Password, salts).then(hash =>{
+            this.local.Password = hash;
             next();
         }).catch(error => next(error));
     }).catch(error => next(error))
