@@ -9,11 +9,20 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser } from "./actions/AuthActions";
+import jwt from 'jsonwebtoken'
 
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 );
+
+if(localStorage.jwtToken){
+    setAuthToken(localStorage.jwtToken)
+    store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+}
+
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
 

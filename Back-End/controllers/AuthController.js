@@ -8,17 +8,17 @@ const AuthController = {
     let UserName = req.body.UserName;
     let Password = req.body.Password;
 
-    User.findOne({UserName})
+    User.findOne({"local.UserName": UserName})
         .then(user =>{
             if(!user) return res.status(404).send({message: 'El usuario no existe'});
-            bcrypt.compare(Password, user.Password)
+            bcrypt.compare(Password, user.local.Password)
                 .then(match =>{
                     if(match){
                         //ACCESO
                         payload = {
                             id: user._id,
-                            UserName: user.UserName,
-                            Email: user.Email
+                            UserName: user.local.UserName,
+                            Email: user.local.Email
                         }
                         jwt.sign(payload,process.env.SECRET_TOKEN,function(error, token){
                             if(error){
