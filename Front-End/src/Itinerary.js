@@ -1,9 +1,6 @@
 import React from "react";
 import Footer from "./Componentes/Footer";
 import { connect } from "react-redux";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -11,14 +8,14 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { getItinerary } from "./actions/itineraryActions"
 
 
 class Itinerary extends React.Component {
-  componentDidMount() {
+  constructor(props){
+    super(props);
     this.props.getItinerary();
   }
-
-  
 
   render() {
     const {match} =this.props;
@@ -29,7 +26,7 @@ class Itinerary extends React.Component {
           {match.params.id}
         </p>
         {this.props.listaItinerary.map(itinerary => {
-          if (itinerary.city_id == match.params.id){return (
+          if (itinerary.city_id === match.params.id){return (
             <Card>
               <CardActionArea>
                 <CardMedia
@@ -69,14 +66,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getItinerary: async () => {
-      let Itinerary = await axios("http://localhost:4000/itinerary/all");
-      Itinerary = Itinerary.data.respuesta;
-      console.log(Itinerary);
-      dispatch({ type: "GET_ITINERARY", payload: Itinerary });
-    }
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Itinerary);
+export default connect(mapStateToProps, {getItinerary})(Itinerary);

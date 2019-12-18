@@ -6,11 +6,11 @@ const ciudadesController = {
     res.json({ respuesta: data });
   },
   cargarCiudad: async (req, res) => {
-    var ciudad = req.body.ciudad;
-    var pais = req.body.pais;
     const nuevaCiudad = new Ciudad({
-      ciudad: ciudad,
-      pais: pais
+      ciudad: req.body.ciudad,
+      pais: req.body.pais,
+      imgCity: '/img/city/' + req.file.filename,
+      descr: req.body.descr
     });
 
     await nuevaCiudad.save();

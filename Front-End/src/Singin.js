@@ -6,6 +6,8 @@ import logo from "./Componentes/img/Logo.png";
 import Col from 'react-bootstrap/Col';
 import Axios from 'axios'
 import GoogleButton from 'react-google-button'
+import Profile from "./Componentes/img/profile.png"
+
 
 //Regex para Email y Pw
 const emailRegex = RegExp(
@@ -28,13 +30,12 @@ const formValid = ({formErrors, ...rest}) =>{
   return valid;
 }
 
-
-
 class CreateAcount extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      imagePreviewUrl: Profile,
       Email: '',
       UserName: '',
       Password: '',
@@ -74,7 +75,16 @@ class CreateAcount extends React.Component {
 
   handleFile = (e) =>{
     let file = e.target.files[0]
-    this.setState({image: file})
+    let reader = new FileReader();
+
+    reader.onloadend = () => {
+      this.setState({
+        image: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
   }
 
   submitHandler = (e) =>{
@@ -109,9 +119,10 @@ class CreateAcount extends React.Component {
 
   
   render() {
-
-    const responseGoogle = (response) => {
-      console.log(response);
+    let {imagePreviewUrl} = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<img src={imagePreviewUrl} className="profile-pic"/>);
     }
     const {Email, UserName, Password, formErrors } = this.state;
     return (
@@ -120,10 +131,20 @@ class CreateAcount extends React.Component {
         <div className="logo">
           <img alt="logo" src={logo}></img>
         </div>
-        <br></br>
-        <h1>CREATE ACCOUNT</h1>
+        <h3>CREATE ACCOUNT</h3>
+
         <div className="FormCreate">
           <Form method="POST" onSubmit={this.submitHandler}>
+          <div class="avatar-wrapper">
+            {$imagePreview}
+          </div>
+          <div class="button-wrapper">
+          <Button variant="primary" >
+              Upload Image
+            </Button>
+            
+              <input type="file" name="file" class="upload-box" placeholder="Upload File" accept=".png, .jpg, .jpeg" onChange={(e)=>this.handleFile(e)}/>
+          </div>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter email" name="Email" value={Email} onChange={this.changeHandler}/>
@@ -145,22 +166,19 @@ class CreateAcount extends React.Component {
               {formErrors.UserName.length > 0 && (<span className="errorMessaje">{formErrors.UserName}</span>)}
               </Col>
             </Form.Row>
-            <form>
-              <label>
-                Upload file:
-                <input type="file" name="file" onChange={(e)=>this.handleFile(e)}/>
-              </label>
-              <br />
-            </form>
             <br></br>
             <Button variant="primary" type="submit">
               Submit
             </Button>
           </Form>
         </div>
+
+        <div className="Gboton">
         <a href="http://localhost:4000/auth/google">
           <GoogleButton/>
         </a>
+        </div>
+        
         <Footer />
       </div>
     );

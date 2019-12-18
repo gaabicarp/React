@@ -2,9 +2,9 @@ import React from "react";
 import Footer from "./Componentes/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
-import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux'
 import { AuthActions } from './actions/AuthActions'
+import logo from "./Componentes/img/Logo.png";
 
 class Login extends React.Component {
   constructor(props){
@@ -26,14 +26,19 @@ class Login extends React.Component {
 
   onChange =(e) =>{
     this.setState({[e.target.name] : e.target.value});
-    const { name, value } = e.target;
   }
 
   render() {
     const {errors, UserName, Password, isLoading} = this.state;
     return (
       <div className="principal">
-        <h1>LOGIN</h1>
+        <br></br>
+        <div className="logo">
+          <img alt="logo" src={logo}></img>
+        </div>
+        <h3>Welcome</h3>
+        <br></br>
+        <div className="FormCreate">
         <Form method="POST" onSubmit={this.onSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>UserName</Form.Label>
@@ -46,15 +51,12 @@ class Login extends React.Component {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" name="Password" value={Password} onChange={this.onChange}/>
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
           <Button variant="primary" type="submit" disabled={this.isLoading}>
             Submit
           </Button>
         </Form>
         <Footer />
-        
+        </div>
       </div>
     );
   }

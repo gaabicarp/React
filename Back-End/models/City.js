@@ -8,6 +8,14 @@ const ciudadesSchema = new mongoose.Schema({
   pais: {
     type: String,
     required: true
+  },
+  imgCity:{
+    type: String,
+    required: true
+  },
+  descr:{
+    type: String,
+    required: true
   }
 });
 

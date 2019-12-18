@@ -1,33 +1,52 @@
 import React from "react";
 import Footer from "./Componentes/Footer";
 import { connect } from "react-redux";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+import logo from "./Componentes/img/Logo.png";
 import Typography from "@material-ui/core/Typography";
+import { getCities } from "./actions/cityActions";
 
 class Cities extends React.Component {
-  componentDidMount() {
+  constructor(props){
+    super(props);
     this.props.getCities();
+    this.state={
+      filtro: ""
+    }
+  }
+
+  onChange = (e) =>{
+    this.setState({[e.target.name]: e.target.value})
+    console.log(this.state.filtro)
   }
 
   render() {
+    const {filtro} = this.state
     return (
       <React.Fragment>
         <div className="principal">
-          <h1>Ciudades</h1>
+        <div className="logo">
+          <img alt="logo" src={logo}></img>
+        </div>
+        <br></br>
+          <h1>Encontra tu próximo viaje</h1>
+          <input type="text" name="filtro" value={filtro} onChange={this.onChange}/>
           {this.props.listaCiudades.map(city => {
             return (
+              <div className="card">
+              <Link to={`/itineraries/${city._id}`}>
               <Card>
                 <CardActionArea>
                   <CardMedia
-                    image="https://www.oirealtor.com/noticias-inmobiliarias/wp-content/uploads/2018/10/oirealtor-noticias-vivir-en-barcelona-ciudad-noche.jpg"
+                    component="img"
+                    alt={city.ciudad}
+                    height="140"
+                    image={`http://localhost:4000${city.imgCity}`}
                     title={city.ciudad}
                   />
                   <CardContent>
@@ -35,16 +54,13 @@ class Cities extends React.Component {
                       {city.ciudad}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" Component="p">
-                      Re hardcodeado
+                      {city.descr}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    <Link to={`/itineraries/${city._id}`}>Ver más</Link>
-                  </Button>
-                </CardActions>
               </Card>
+              </Link>
+              </div>
             );
           })}
           <Footer />
@@ -60,14 +76,5 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getCities: async () => {
-      let ciudades = await axios("http://localhost:4000/city/all");
-      ciudades = ciudades.data.respuesta;
-      console.log(ciudades);
-      dispatch({ type: "GET_CITIES", payload: ciudades });
-    }
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Cities);
+
+export default connect(mapStateToProps, {getCities})(Cities);

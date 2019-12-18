@@ -14,7 +14,7 @@ const UserController = {
                 Email: req.body.Email,
                 UserName: req.body.UserName,
                 Password: req.body.Password,
-                profileImage: req.file.path
+                profileImage: '/img/user/' + req.file.filename
             }
         });
 

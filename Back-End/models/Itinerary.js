@@ -1,12 +1,17 @@
 const mongoose = require('mongoose')
 var Ciudad = mongoose.model('Ciudad')
+var User = mongoose.model('User')
 
 const itinerarySchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
     },
-    profilePicture: {
+    owner: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User"
+    },
+    itineraryImg: {
         type: String,
         required: true
     },

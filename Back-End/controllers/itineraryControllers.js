@@ -15,21 +15,15 @@ const ItinerartyController = {
   },
 
   cargarItinerary: async (req, res) => {
-    var title = req.body.title;
-    var profilePicture = req.body.profilePicture;
-    var raiting = req.body.raiting;
-    var duration = req.body.duration;
-    var city_id = req.body.city_id;
-    var price = req.body.price;
-    var hashtags = req.body.hashtags;
     const nuevoItinerary = new Itinerary({
-      title: title,
-      profilePicture: profilePicture,
-      raiting: raiting,
-      duration: duration,
-      city_id: city_id,
-      price: price,
-      hashtags: hashtags
+      title: req.body.title,
+      owner: req.body.owner,
+      itineraryImg: '/img/itinerary/' + req.file.filename,
+      raiting: req.body.raiting,
+      duration: req.body.duration,
+      city_id: req.body.city_id,
+      price: req.body.price,
+      hashtags: req.body.hashtags
     });
 
     await nuevoItinerary.save();

@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-export const getItinerary = () => dispatch => {
-    dispatch(setItemsLoading());
-    axios
-        .get('http://localhost:4000/city/all')
-        .then(res =>
-            dispatch({
-                type: 'GET_CITIES',
-                payload: res.data
-            })
-        .catch(err =>
-            dispatch(returnErrors(err.response.data, err.response.status))))
+export function getItinerary(){
+    return async dispatch => {
+        let Itinerary = await axios("http://localhost:4000/itinerary/all");
+        Itinerary = Itinerary.data.respuesta;
+        console.log(Itinerary);
+        dispatch({ type: "GET_ITINERARY", payload: Itinerary });
+      }
 }
