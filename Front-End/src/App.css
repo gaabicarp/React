@@ -1,6 +1,6 @@
 .Cabecera-img {
-  width: 1.7em;
-  margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 
 .FormCreate{
@@ -95,6 +95,16 @@
   width: 100%;
   transition: all 0.3s ease;
 }
+
+.Img-menu{
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px -5px black;
+  transition: all 0.3s ease;
+}
+
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 

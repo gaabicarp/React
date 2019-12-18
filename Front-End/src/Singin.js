@@ -131,7 +131,7 @@ class CreateAcount extends React.Component {
         <div className="logo">
           <img alt="logo" src={logo}></img>
         </div>
-        <h3>CREATE ACCOUNT</h3>
+        <h3>Welcome!</h3>
 
         <div className="FormCreate">
           <Form method="POST" onSubmit={this.submitHandler}>
@@ -177,6 +177,11 @@ class CreateAcount extends React.Component {
         <a href="http://localhost:4000/auth/google">
           <GoogleButton/>
         </a>
+        </div>
+        <br></br>
+        <div>
+          ¿Ya estas Registrado?
+          Entonces <a href="/login">Ingresa con tu cuenta</a>
         </div>
         
         <Footer />

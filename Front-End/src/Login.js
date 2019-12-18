@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux'
 import { AuthActions } from './actions/AuthActions'
 import logo from "./Componentes/img/Logo.png";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props){
@@ -23,7 +23,7 @@ class Login extends React.Component {
     console.log(this.state);
     this.setState({errors: {}, isLoading: true});
     this.props.AuthActions(this.state);
-    return <Redirect to="/"/>
+    this.props.history.push('/');
   }
 
   onChange =(e) =>{
@@ -71,4 +71,4 @@ class Login extends React.Component {
 // Login.contextTypes = {
 //   router: React.propTypes.objet.isRequired
 // }
-export default connect(null, {AuthActions} )(Login);
+export default withRouter(connect(null, {AuthActions} )(Login));

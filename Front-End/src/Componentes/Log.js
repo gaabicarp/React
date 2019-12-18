@@ -10,13 +10,13 @@ class Log extends React.Component {
   render() {
     return (
       <div className="Log">
-          <p>Want to build your own Ytinary?</p>
+          <p>¿Queres construir tu propio Itinerary?</p>
           <Container>
             <Row>
               <Col>
                 <Link to ="/create">
                   <Button variant="outline-danger" size="sm" block>
-                    Create Account
+                    Registrate
                   </Button>
                 </Link>
               </Col>
