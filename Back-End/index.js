@@ -19,6 +19,7 @@ app.use("/city", require("./routes/routerCiudades"));
 app.use("/Itinerary", require("./routes/routerItinerary"));
 app.use("/user", require("./routes/routerUser"));
 app.use("/auth", require("./routes/auth"));
+app.use("/activity", require("./routes/routerActivity"));
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(process.env.PORT, () => console.log("Listening on PORT " + process.env.PORT));

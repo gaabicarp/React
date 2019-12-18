@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux'
 import { AuthActions } from './actions/AuthActions'
 import logo from "./Componentes/img/Logo.png";
+import { Redirect } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props){
@@ -17,11 +18,12 @@ class Login extends React.Component {
     };
   }
 
-  onSubmit=(e) =>{
+  onSubmit= (e) =>{
     e.preventDefault();
     console.log(this.state);
     this.setState({errors: {}, isLoading: true});
-    this.props.AuthActions(this.state)
+    this.props.AuthActions(this.state);
+    return <Redirect to="/"/>
   }
 
   onChange =(e) =>{

@@ -18,7 +18,8 @@ const AuthController = {
                         payload = {
                             id: user._id,
                             UserName: user.local.UserName,
-                            Email: user.local.Email
+                            Email: user.local.Email,
+                            profileImage: user.local.profileImage
                         }
                         jwt.sign(payload,process.env.SECRET_TOKEN,function(error, token){
                             if(error){

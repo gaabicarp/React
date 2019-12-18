@@ -5,17 +5,35 @@ import CreateAcount from "./Singin";
 import Cities from "./Cities";
 import "./App.css";
 import Itinerary from "./Itinerary";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import jwt from 'jsonwebtoken';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+const isAuthenticated = () =>{
+  const token = localStorage.getItem('jwtToken')
+  let isValid = true
+  try{
+    isValid = jwt.decode(token);
+  }catch(e){
+    return false;
+  }
+  return isValid
+};
+
+const MyRoute = (props) => (
+  isAuthenticated()
+    ?<Route{...props} />
+    :<Redirect to="/login"/>
+)
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/itineraries/:id" component={Itinerary} />
+        <MyRoute exact path="/itineraries/:id" component={Itinerary} />
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/create" component={CreateAcount} />
-        <Route path="/cities" component={Cities} />
+        <MyRoute path="/cities" component={Cities} />
       </Switch>
     </BrowserRouter>
   );
