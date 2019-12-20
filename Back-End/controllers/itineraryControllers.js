@@ -2,7 +2,7 @@ const Itinerary = require("../models/Itinerary");
 
 const ItinerartyController = {
   listarItinerary: async (req, res) => {
-    const data = await Itinerary.find();
+    const data = await Itinerary.find().populate('owner');
     res.json({ respuesta: data });
   },
   listarUno: async (req, res) => {

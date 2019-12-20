@@ -18,9 +18,10 @@ const activityController = {
         const nuevaActivity = new Activity({
             title: req.body.title,
             adress: req.body.adress,
-            imageAct: '/img/activity/' + req.file.filename,
+            imageAct: '/img/Act/' + req.file.filename,
             price: req.body.price,
-            description: req.body.description
+            description: req.body.description,
+            Itinerary_id: req.body.Itinerary_id
         });
         await nuevaActivity.save();
         res.send("Nueva actividad agregada")

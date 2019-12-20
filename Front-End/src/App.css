@@ -19,6 +19,24 @@
   margin: 0.5em auto;
 }
 
+.descripcion{
+  justify-content: space-around;
+}
+
+.ActImg{
+  justify-content: center;
+  margin: auto;
+  font-size: small;
+}
+.ActImg img{
+  width: 10em;
+  margin: auto;
+  
+}
+.CardImg{
+  display: flex;
+  margin: 1em 0.5em;
+}
 .Menu {
   display: flex;
   flex-wrap: wrap;
