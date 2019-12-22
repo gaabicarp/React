@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import logo from "./Componentes/img/Logo.png";
 import { getItinerary } from "./actions/itineraryActions"
 import CardItine from "./Componentes/CardItine"
+import Cabecera from "./Componentes/Cabecera";
 
 class Itinerary extends React.Component {
   constructor(props){
@@ -15,10 +16,8 @@ class Itinerary extends React.Component {
     const {match} =this.props;
     return (
       <div className="principal">
-        <div className="logo">
-          <img alt="logo" src={logo}></img>
-        </div>
-        <h3>Itinerary</h3>
+        <Cabecera/>
+        <h3>Lista de Itinerarios</h3>
 
         <div>
     </div>

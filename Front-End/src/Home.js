@@ -7,21 +7,14 @@ import { connect } from "react-redux";
 
 class Home extends React.Component {
   render() {
-    const { auth } = this.props
     return (
       <div className="principal">
-        <Cabecera />
+        <br></br>
         <Body />
-        {auth.isAuthenticated ? null : <Log />}
+        <Log />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return{
-  auth: state.auth
-  };
-};
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;

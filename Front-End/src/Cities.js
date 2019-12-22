@@ -10,33 +10,39 @@ import CardMedia from "@material-ui/core/CardMedia";
 import logo from "./Componentes/img/Logo.png";
 import Typography from "@material-ui/core/Typography";
 import { getCities } from "./actions/cityActions";
+import Cabecera from "./Componentes/Cabecera";
+import SearchIcon from '@material-ui/icons/Search';
 
 class Cities extends React.Component {
   constructor(props){
     super(props);
     this.props.getCities();
     this.state={
-      filtro: ""
+      filtro: ''
     }
   }
 
   onChange = (e) =>{
-    this.setState({[e.target.name]: e.target.value})
-    console.log(this.state.filtro)
+    this.setState({filtro: e.target.value.substr(0, 20)})
   }
 
   render() {
     const {filtro} = this.state
+    let listafiltrada = this.props.listaCiudades.filter(item =>{
+      return item.ciudad.toLowerCase().indexOf(this.state.filtro.toLowerCase()) !== -1;
+    })
+    const {auth} = this.props
+
     return (
       <React.Fragment>
         <div className="principal">
-        <div className="logo">
-          <img alt="logo" src={logo}></img>
-        </div>
-        <br></br>
-          <h1>Encontra tu próximo viaje</h1>
-          <input type="text" name="filtro" value={filtro} onChange={this.onChange}/>
-          {this.props.listaCiudades.map(city => {
+        <Cabecera/>
+            <h3>Encontra tu próximo viaje</h3>
+          <div>
+          <SearchIcon/>
+          <input type="text" name="filtro" placeholder="Buscar..." value={filtro} onChange={this.onChange}/>
+          </div>
+          {listafiltrada.map(city => {
             return (
               <div className="card">
               <Link to={`/itineraries/${city._id}`}>
@@ -50,12 +56,10 @@ class Cities extends React.Component {
                     title={city.ciudad}
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" Component="h2">
+                    <h5>
                       {city.ciudad}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" Component="p">
-                      {city.descr}
-                    </Typography>
+                      </h5>
+                      <p>{city.descr}</p>
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -72,7 +76,8 @@ class Cities extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    listaCiudades: state.cities.ciudades
+    listaCiudades: state.cities.ciudades,
+    auth: state.auth
   };
 };
 

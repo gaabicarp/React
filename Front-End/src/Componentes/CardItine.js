@@ -22,7 +22,6 @@ render(){
     const itinerary = this.props.store
     return(
       <div className="card">
-        {itinerary._id}
       <Card>
       <CardActionArea>
         <CardHeader

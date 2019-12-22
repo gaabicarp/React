@@ -33,16 +33,17 @@
             <div>
                 <div><h6>{Activity.title}</h6></div>
                 <div>
-                <Typography variant="caption" color="textSecondary" component="p">
-                    {Activity.description}<br></br>
-                </Typography>
-                <Typography variant="subtitle2" color="textPrimary" component="p">
-                Price: {Activity.price}USD
-                </Typography>
+                    <Typography variant="caption" color="white" component="p">
+                        {Activity.description}<br></br>
+                    </Typography>
+                    <Typography variant="subtitle2" color="textPrimary" component="p">
+                    Price: {Activity.price}USD
+                    </Typography>
                 
                 </div>
-
+                <hr></hr>
             </div>
+           
         </div>
 
           )

@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.root{
+  background-color: gray;
+  font-family: 'Roboto', sans-serif;
+
+}
+
 .Cabecera-img {
   height: 100%;
   width: 100%;
@@ -8,15 +16,34 @@
   margin-top: -1em;
 }
 .Arriba {
-  margin: 0.7em;
-  max-height: 3em;
+  margin: 0.7em 0px;
+  max-height: 3.5em;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;}
+  justify-content: space-between;
+  background-color: #FF7733;
+  align-items: center;
+  padding: 0px 0.5em;
+  box-shadow: 1px 1px 15px -5px black;
+
+}
+
+.MuiCardHeader-root{
+  background-image: linear-gradient(240deg, rgb(241, 241, 241) 20%, #EAF9D9 80%)
+
+}
+
+.MuiCollapse-container{
+  background-image: linear-gradient(240deg, rgb(241, 241, 241) 20%, #EAF9D9 80%)
+}
+
+.MuiAvatar-root{
+  margin-top: 1em;
+}
 
 .card{
   text-decoration: none;
-  margin: 0.5em auto;
+  margin: 0.5em 0.9em;
 }
 
 .descripcion{
@@ -49,13 +76,23 @@
 }
 
 .principal {
-  max-width: 480px;
+  width: 480px;
+  min-height: 48em;
   text-align: center;
   margin: auto;
+  background-image: linear-gradient(20deg, rgb(241, 241, 241) 20%, #E1E6E1 80%)
+ }
+.MuiCardContent-root{
+  background-image: linear-gradient(45deg, #F85A3E 30%, #FF7733 90%);
+  color: whitesmoke;
 }
 
 .logo img {
   width: 20em;
+}
+
+.logocabecera img{
+  width: 10em;
 }
 
 .Carrusel{
@@ -66,12 +103,19 @@
 .cuerpo {
   margin-top: 0.7em;
 }
-.cuerpo p {
+.cuerpo p{
   margin: 1em;
   margin-bottom: 1em;
   margin-top: 1em;
   font-size: 0.89em;
 }
+.cuerpo h3{
+  margin: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+
 
 .Flecha {
   width: 6.5em;
