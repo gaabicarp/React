@@ -29,7 +29,7 @@ class Cabecera extends React.Component {
             <Avatar alt={auth.user.UserName} src={`http://localhost:4000${auth.user.profileImage}`} />
           
           </Dropdown.Toggle>
-            {auth.isAuthenticated ? <Dropdown.Menu><Dropdown.Item href="/cities">Cities</Dropdown.Item><Dropdown.Item onClick={this.onClick}>Logout</Dropdown.Item></Dropdown.Menu> : <Dropdown.Menu><Dropdown.Item href="/login">Login</Dropdown.Item><Dropdown.Item href="/create">Create Account</Dropdown.Item></Dropdown.Menu> }
+            {auth.isAuthenticated ? <Dropdown.Menu><Dropdown.Item href="/cities">Ciudades</Dropdown.Item><Dropdown.Item href="/favorites">Mis Favoritos</Dropdown.Item><Dropdown.Item onClick={this.onClick}>Logout</Dropdown.Item></Dropdown.Menu> : <Dropdown.Menu><Dropdown.Item href="/login">Login</Dropdown.Item><Dropdown.Item href="/create">Create Account</Dropdown.Item></Dropdown.Menu> }
         </Dropdown>
 
       </div>

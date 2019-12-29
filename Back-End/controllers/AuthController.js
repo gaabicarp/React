@@ -7,20 +7,23 @@ const AuthController = {
     login: async (req,res) =>{
     let UserName = req.body.UserName;
     let Password = req.body.Password;
+    console.log("acasi")
 
     User.findOne({"local.UserName": UserName})
         .then(user =>{
             if(!user) return res.status(404).send({message: 'El usuario no existe'});
             bcrypt.compare(Password, user.local.Password)
                 .then(match =>{
+                    console.log(match)
                     if(match){
                         //ACCESO
+                        console.log("entro")
                         payload = {
                             id: user._id,
                             UserName: user.local.UserName,
                             Email: user.local.Email,
-                            profileImage: user.local.profileImage
-                        }
+                            profileImage: user.local.profileImage,
+                                                }
                         jwt.sign(payload,process.env.SECRET_TOKEN,function(error, token){
                             if(error){
                                 res.status(500).send({error})

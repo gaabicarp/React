@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
         profileImage: {
             type: String
         }
+    },
+    favorites:{
+        type: [mongoose.Schema.ObjectId],
+        ref: "Itinerary"
     }
 });
 

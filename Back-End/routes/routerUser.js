@@ -31,6 +31,9 @@ router
     .route("/create")
     .get(userController.listarUser)
     .post(upload.single('imagen'), userController.cargarUser);
-    
+
+router
+    .route("/favorite")
+    .put(userController.favoritos)
 
 module.exports = router;

@@ -26,7 +26,6 @@ class Login extends React.Component {
     console.log(this.state);
     this.setState({errors: {}, isLoading: true});
     this.props.AuthActions(this.state);
-    this.props.history.push('/');
   }
 
   onChange =(e) =>{

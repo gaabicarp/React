@@ -4,6 +4,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import Modal from '@material-ui/core/Modal';
 import Activities from "./Activities"
+import { connect } from "react-redux";
+import Axios from 'axios';
 
 
 class CardItine extends React.Component{
@@ -18,6 +20,24 @@ class CardItine extends React.Component{
     this.setState({expanded: !this.state.expanded})
   }
 
+  favorite = () =>{
+    const data= {
+      id: this.props.auth.user.id,
+      favorite: this.props.store._id
+    }
+
+    Axios.put(
+      'http://localhost:4000/user/favorite',
+      data
+    )
+    .then(response =>{
+      console.log(response.config.data);
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }
+
 render(){
     const itinerary = this.props.store
     return(
@@ -30,7 +50,7 @@ render(){
           }   
           title={itinerary.title}
           subheader={itinerary.owner.local.UserName}               
-
+          
         />
         <CardMedia
           component="img"
@@ -47,7 +67,7 @@ render(){
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+            <FavoriteIcon onClick={this.favorite}/>
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
@@ -68,4 +88,10 @@ render(){
     )}
 }
 
-export default CardItine;
+const mapStateToProps = state => {
+  return{
+  auth: state.auth
+  };
+};
+
+export default connect(mapStateToProps, null)(CardItine);
