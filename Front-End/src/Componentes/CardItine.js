@@ -6,6 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Activities from "./Activities"
 import { connect } from "react-redux";
 import Axios from 'axios';
+import {favoritesactions} from "../actions/AuthActions"
 
 
 class CardItine extends React.Component{
@@ -36,6 +37,8 @@ class CardItine extends React.Component{
     .catch(error =>{
       console.log(error)
     })
+
+    this.props.favoritesactions(data.id)
   }
 
 render(){
@@ -94,4 +97,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(CardItine);
+export default connect(mapStateToProps, {favoritesactions})(CardItine);

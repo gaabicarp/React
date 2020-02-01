@@ -2,7 +2,8 @@ import isEmpty from 'lodash/isEmpty'
 
 const initialState = {
     inAuthenticated: false,
-    user: {}
+    user: {},
+    favorites:{}
 };
 
 
@@ -13,6 +14,9 @@ export default (state = initialState, action = {}) => {
                 isAuthenticated: !isEmpty(action.user),
                 user: action.user
             };
-        default:return state;
+        case "SET_FAVORITES":
+            return{ ...state, favorites: [...action.payload] };
+        default:
+            return state;
     }
 }

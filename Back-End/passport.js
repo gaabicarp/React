@@ -24,7 +24,7 @@ passport.use(
 
 // GOOGLE STRATEGY
 
-passport.use(new GoogleStrategy({
+passport.use('google', new GoogleStrategy({
     clientID: '12194280660-7f0s85enas5qcpn9h8b9vab446si0jr9.apps.googleusercontent.com',
     clientSecret: 'e9sSMk-xg5i8L-EPPLRfcevZ',
     callbackURL: "http://localhost:4000/auth/callback"
@@ -36,7 +36,7 @@ passport.use(new GoogleStrategy({
     
         const existinUser = await User.findOne({"google.id": profile.id});
         if (existinUser){
-            return done(null, existinUser);
+            return done(null, profile);
         }
     
         const newUser = new User({
@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
         })
     
         await newUser.save();
-        done(null, newUser);
+        done(null, profile);
 
     }catch (err) {
         console.error(err)

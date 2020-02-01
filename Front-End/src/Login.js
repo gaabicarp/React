@@ -3,11 +3,11 @@ import Footer from "./Componentes/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux'
-import { AuthActions } from './actions/AuthActions'
+import { AuthActions, Authcngoogle } from './actions/AuthActions'
 import logo from "./Componentes/img/Logo.png";
 import { withRouter } from "react-router-dom";
-import GoogleButton from 'react-google-button';
-import Accordion from 'react-bootstrap/Accordion'
+import GoogleButton from 'react-google-button'
+import Accordion from 'react-bootstrap/Accordion';
 
 
 class Login extends React.Component {
@@ -19,6 +19,7 @@ class Login extends React.Component {
       errors: {},
       isLoading: false
     };
+    this.responseGoogle = this.responseGoogle.bind(this)
   }
 
   onSubmit= (e) =>{
@@ -26,6 +27,13 @@ class Login extends React.Component {
     console.log(this.state);
     this.setState({errors: {}, isLoading: true});
     this.props.AuthActions(this.state);
+    this.props.history.push("/");
+
+  }
+
+  responseGoogle(res){
+    console.log(res)
+    // this.props.Authcngoogle(res.accessToken);
   }
 
   onChange =(e) =>{
@@ -45,7 +53,7 @@ class Login extends React.Component {
         </div>
         <br></br>
         <div className="FormCreate">
-        <div className="Gboton">
+          <div className="Gboton">
           <a href="http://localhost:4000/auth/google">
             <GoogleButton/>
           </a>
@@ -95,4 +103,4 @@ class Login extends React.Component {
 // Login.contextTypes = {
 //   router: React.propTypes.objet.isRequired
 // }
-export default withRouter(connect(null, {AuthActions} )(Login));
+export default withRouter(connect(null, {AuthActions, Authcngoogle} )(Login));

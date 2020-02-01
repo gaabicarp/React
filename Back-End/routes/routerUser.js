@@ -34,6 +34,9 @@ router
 
 router
     .route("/favorite")
-    .put(userController.favoritos)
-
+    .put(userController.favoritos);
+router
+    .route("/edit")
+    .put(userController.editUser);
+    
 module.exports = router;

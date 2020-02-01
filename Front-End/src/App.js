@@ -8,6 +8,7 @@ import Itinerary from "./Itinerary";
 import Favorites from "./Componentes/favorites"
 import jwt from 'jsonwebtoken';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Loader from "./Componentes/Loader"
 
 const isAuthenticated = () =>{
   const token = localStorage.getItem('jwtToken')
@@ -36,6 +37,8 @@ function App() {
         <Route path="/create" component={CreateAcount} />
         <MyRoute path="/favorites" component={Favorites} />
         <MyRoute path="/cities" component={Cities} />
+        <Route exact path="/loaduser/:token" component={Loader} />
+
       </Switch>
     </BrowserRouter>
   );

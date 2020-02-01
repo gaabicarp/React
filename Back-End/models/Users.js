@@ -39,17 +39,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.pre('save',function(next){
-    if (this.method !=='local'){
-        next();
-    }
-    bcrypt.genSalt(10).then(salts =>{
-        bcrypt.hash(this.local.Password, salts).then(hash =>{
-            this.local.Password = hash;
-            next();
-        }).catch(error => next(error));
-    }).catch(error => next(error))
-});
+
 
 const User = mongoose.model("User", userSchema);
 

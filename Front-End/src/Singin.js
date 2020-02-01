@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Axios from 'axios'
 import GoogleButton from 'react-google-button'
 import Profile from "./Componentes/img/profile.png"
+import { withRouter } from "react-router-dom";
+
 
 
 //Regex para Email y Pw
@@ -114,6 +116,7 @@ class CreateAcount extends React.Component {
     else{
     console.error('Formulario Invalido');
     }
+    this.props.history.push("/login");
 
   }
 
@@ -155,15 +158,15 @@ class CreateAcount extends React.Component {
             </Form.Group>
             <Form.Row>
               <Col>
+              <Form.Label>User name</Form.Label><Form.Control placeholder="User name" name="UserName" value={UserName} onChange={this.changeHandler}/>
+              {formErrors.UserName.length > 0 && (<span className="errorMessaje">{formErrors.UserName}</span>)}
+              </Col>
+              <Col>
                 <Form.Group controlId="formBasicPassword" >
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" name="Password" value={Password} onChange={this.changeHandler}/>
                 {formErrors.Password.length > 0 && (<span className="errorMessaje">{formErrors.Password}</span>)}
                 </Form.Group>
-              </Col>
-              <Col>
-              <Form.Label>User name</Form.Label><Form.Control placeholder="User name" name="UserName" value={UserName} onChange={this.changeHandler}/>
-              {formErrors.UserName.length > 0 && (<span className="errorMessaje">{formErrors.UserName}</span>)}
               </Col>
             </Form.Row>
             <br></br>
@@ -190,4 +193,4 @@ class CreateAcount extends React.Component {
   }
 }
 
-export default CreateAcount;
+export default withRouter(CreateAcount);

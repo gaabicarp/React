@@ -22,14 +22,11 @@ router
 
 router
   .route("/google")
-  .get(passport.authenticate('google', { scope: ['email', 'profile'] }));
+  .get(passport.authenticate('google', { scope: ["profile", "email"]  }));
         
-router
-  .route('/callback')
-  .get(passport.authenticate('google',{session: false, failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000/cities');
-  });
+
+  router
+  .route("/callback")
+  .get(passport.authenticate('google', { session: false }), AuthCtrl.googleOAuth);
 
 module.exports = router;
